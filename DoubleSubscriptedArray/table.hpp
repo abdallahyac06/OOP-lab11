@@ -2,6 +2,7 @@
 #define TABLE_HPP
 
 #include <iostream>
+#include <stdexcept>
 
 template <typename T>
 class Table {
@@ -23,6 +24,13 @@ public:
     friend std::ostream &operator<<(std::ostream &, const Table<U> &);
     template <typename U>
     friend std::istream &operator>>(std::istream &,  Table<U> &);
+};
+
+class OutOfRangeError : public std::exception {
+    public:
+        virtual const char *what() const noexcept override {
+            return "The index is out of range";
+        }
 };
 
 #include "table.tpp"

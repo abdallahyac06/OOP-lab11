@@ -17,7 +17,7 @@ Table<T>::~Table() {
 template <typename T>
 T &Table<T>::operator()(int r, int c) {
     if (r < 0 || r >= rowsize || c < 0 || c >= columnsize) {
-        throw std::out_of_range("Index out of range.");
+        throw OutOfRangeError();
     }
     return data[r * columnsize + c];
 }
