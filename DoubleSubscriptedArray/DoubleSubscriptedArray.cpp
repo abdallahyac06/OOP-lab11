@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 DoubleSubscriptedArray::DoubleSubscriptedArray(int r, int c) : rowsize(r), columnsize(c) {
-    if (r < 1 || c < 1) {
+    if (rowsize < 1 || columnsize < 1) {
         throw std::invalid_argument("Invalid array size.");
     }
     data = new int[rowsize * columnsize];

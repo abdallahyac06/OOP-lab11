@@ -1,8 +1,9 @@
 #include <iostream>
+#include "table.hpp"
 
 template <typename T>
 Table<T>::Table(int r, int c) : rowsize(r), columnsize(c) {
-    if (r < 1 || c < 1) {
+    if (rowsize < 1 || columnsize < 1) {
         throw std::invalid_argument("Invalid array size.");
     }
     data = new T[rowsize * columnsize];
@@ -25,7 +26,7 @@ T &Table<T>::operator()(int r, int c) {
 template <typename T>
 const T &Table<T>::operator()(int r, int c) const {
     if (r < 0 || r >= rowsize || c < 0 || c >= columnsize) {
-        throw std::out_of_range("Index out of range.");
+        throw OutOfRangeError();
     }
     return data[r * columnsize + c];
 }

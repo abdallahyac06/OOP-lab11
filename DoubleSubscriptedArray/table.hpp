@@ -23,10 +23,10 @@ public:
     template <typename U>
     friend std::ostream &operator<<(std::ostream &, const Table<U> &);
     template <typename U>
-    friend std::istream &operator>>(std::istream &,  Table<U> &);
+    friend std::istream &operator>>(std::istream &, Table<U> &);
 };
 
-class OutOfRangeError : public std::exception {
+class OutOfRangeError : public std::out_of_range {
     public:
         virtual const char *what() const noexcept override {
             return "The index is out of range";
